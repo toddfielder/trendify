@@ -19,11 +19,13 @@ public class HomeController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<List<Category>> home() {
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String home() {
+//	    return "index.html";
+//	}
+	@RequestMapping(value = "/categories", method = RequestMethod.GET)
+	public ResponseEntity<List<Category>> getCategories() {
 	    return new ResponseEntity<List<Category>>(categoryService.getCategories(), HttpStatus.OK);
 	}
-	
 	
 }
