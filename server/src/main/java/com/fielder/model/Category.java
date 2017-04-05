@@ -1,21 +1,25 @@
 package com.fielder.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Category")
+@Table(name = "category")
 public class Category {
 
 	@Id
 	@GeneratedValue
-	private Integer id;
-	
-	private String title;
-	
+	private Integer id;	
+	private String title;	
 	private String description;
+	
+	@OneToMany (mappedBy="category")
+	private List<Topic> topics;	
 	
 	public Integer getId() {
 		return id;
@@ -40,4 +44,14 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public List<Topic> getTopics() {
+		return topics;
+	}
+
+	public void setTopics(List<Topic> topics) {
+		this.topics = topics;
+	}
+	
+	
 }

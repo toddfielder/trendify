@@ -1,8 +1,11 @@
 package com.fielder.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,11 +14,13 @@ public class Topic {
 
 	@Id
 	@GeneratedValue
-	private Integer id;
-	
-	private String title;
-	
+	private Integer id;	
+	private String title;	
 	private String description;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn (name="categoryId")
+	private Category category;	
 	
 	public Integer getId() {
 		return id;
@@ -40,4 +45,13 @@ public class Topic {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
 }
