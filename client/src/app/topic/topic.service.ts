@@ -7,16 +7,16 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
-import { ICategory } from './category';
+import { ITopic } from './topic';
 @Injectable()
-export class CategoryService {
-  private _categoryUrl = '/categories';
+export class TopicService {
+  private _topicUrl = '/topics';
 
   constructor(private _http: Http) { }
 
-  getCategories(): Observable<ICategory[]> {
-        return this._http.get(this._categoryUrl)
-            .map((response: Response) => <ICategory[]> response.json()._embedded.categories)
+  getTopics(): Observable<ITopic[]> {
+        return this._http.get(this._topicUrl)
+            .map((response: Response) => <ITopic[]> response.json()._embedded.topics)
             .do(data => console.log('All: ' +  JSON.stringify(data)))
             .catch(this.handleError);
     }

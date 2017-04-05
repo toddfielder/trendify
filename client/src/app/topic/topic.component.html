@@ -1,0 +1,27 @@
+
+<div class="col">
+	<div class='panel panel-primary' style="border: 1px solid #cecece;">
+		<div class='panel-heading '>
+			<h3 class='panel-title'>&nbsp;{{title}}</h3>
+		</div>
+		<!--<div class='panel-body'>-->
+		<div class='table-responsive'>
+			<table class='table table-hover'
+				*ngIf='topics && topics.length'>
+				<thead class="thead-default">
+					<tr>
+						<th>Title</th>
+						<th>Category</th>
+						<th><i class="fa fa-plus" aria-hidden="true"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor='let topic of topics'>
+						<td>{{topic.title}}</td>
+						<td>sdsd</td>
+						<td></td>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

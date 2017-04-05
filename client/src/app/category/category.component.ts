@@ -1,6 +1,6 @@
 import { CategoryService } from './category.service';
 import { ICategory } from './category';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-category',
@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  title: string = 'Categories';
+
+  @Input()
+  title: string;
   categories: ICategory[];
   errorMessage: string;
 

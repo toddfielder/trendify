@@ -1,32 +1,25 @@
-<div class="container" >
-	<div class="row">
-		<div class="col">
 
-			<div class='panel panel-primary' style="border: 1px solid #cecece;">
-				<div class='panel-heading '>
-					<h3 class='panel-title'>&nbsp;{{title}}</h3>
-				</div>
-				<!--<div class='panel-body'>-->
-				<div class='table-responsive'>
-					<table class='table table-hover table-sm'
-						*ngIf='categories && categories.length'>
-						<thead class="thead-default">
-							<tr>
-								<th>Category Name</th>
-								<th><i class="fa fa-plus" aria-hidden="true"></i></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor='let category of categories'>
-								<td>{{category.name}}</td>
-								<td></td>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="col">sdsdsd</div>
+<div class='panel panel-primary' style="border: 1px solid #cecece;">
+	<div class='panel-heading '>
+		<h3 class='panel-title'>&nbsp;{{title}}</h3>
+	</div>
+	<!--<div class='panel-body'>-->
+	<div class='table-responsive'>
+		<table class='table table-sm table-hover'
+			*ngIf='categories && categories.length'>
+			<thead class="thead-default">
+				<tr>
+					<th>Title</th>
+					<th>Description</th>
+					<th width='5%'><i class="fa fa-plus" aria-hidden="true"></i></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor='let category of categories'>
+					<td>{{category.title}}</td>
+					<td>{{category.description}}</td>
+					<td></td>
+			</tbody>
+		</table>
 	</div>
 </div>
-<!--</div>
-</div>-->

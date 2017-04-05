@@ -1,8 +1,9 @@
 INSERT INTO `trendsetter`.`category`
-(`name`)
+(`title`, `description`, `createdDate`, `createdBy`)
 VALUES
-('Video Games');
+('Video Games', 'Topics related to PC, Console, and Mobile Gaming', NOW(), 'toddfielder');
 INSERT INTO `trendsetter`.`category`
-(`name`)
+(`title`, `description`, `createdDate`, `createdBy`)
 VALUES
-('Politics');
+('Politics', 'Topics related to politics, including analysis and opinions of the latest headlines', NOW(), 'toddfielder');
+
