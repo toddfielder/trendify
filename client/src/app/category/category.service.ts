@@ -8,19 +8,24 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { ICategory } from './category';
+
 @Injectable()
 export class CategoryService {
-  private _categoryUrl = '/categories';
+    private _categoryUrl = '/category';
 
-  constructor(private _http: Http) { }
+    constructor(private _http: Http) { }
 
-  getCategories(): Observable<ICategory[]> {
+    getCategories(): Observable<ICategory[]> {
         return this._http.get(this._categoryUrl)
-            .map((response: Response) => <ICategory[]> response.json()._embedded.categories)
-            .do(data => console.log('All: ' +  JSON.stringify(data)))
+            .map((response: Response) => <ICategory[]>response.json())
+            .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-  private handleError(error: Response) {
+    getCategory(id: number): Observable<ICategory> {
+        return this.getCategories()
+            .map((categories: ICategory[]) => categories.find(c => c.id === id));
+    }
+    private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);

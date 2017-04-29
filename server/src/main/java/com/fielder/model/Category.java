@@ -1,24 +1,36 @@
 package com.fielder.model;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "category")
-public class Category {
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+public class Category implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7990783376825858354L;
 	@Id
 	@GeneratedValue
 	private Integer id;	
 	private String title;	
 	private String description;
 	
-	@OneToMany (mappedBy="category")
+	@OneToMany (mappedBy="category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	//@JsonManagedReference
 	private List<Topic> topics;	
 	
 	public Integer getId() {
@@ -44,7 +56,7 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	//@JsonIgnore
 	public List<Topic> getTopics() {
 		return topics;
 	}

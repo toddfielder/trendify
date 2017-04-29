@@ -11,19 +11,22 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './category/category.service';
 import { TopicComponent } from './topic/topic.component';
 import { TopicService } from './topic/topic.service';
+import { CategoryDetailComponent } from './category/categorydetail/categorydetail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryComponent,
     DashboardComponent,
-    TopicComponent
+    TopicComponent,
+    CategoryDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
+      { path: 'category/:id', component: CategoryDetailComponent },
       { path: '', component: DashboardComponent },
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
     ]),

@@ -10,13 +10,13 @@ import 'rxjs/add/observable/throw';
 import { ITopic } from './topic';
 @Injectable()
 export class TopicService {
-  private _topicUrl = '/topics';
+  private _topicUrl = '/topic';
 
   constructor(private _http: Http) { }
 
   getTopics(): Observable<ITopic[]> {
         return this._http.get(this._topicUrl)
-            .map((response: Response) => <ITopic[]> response.json()._embedded.topics)
+            .map((response: Response) => <ITopic[]> response.json())
             .do(data => console.log('All: ' +  JSON.stringify(data)))
             .catch(this.handleError);
     }
