@@ -4,19 +4,19 @@
 		<h3 class='card-title'>&nbsp;{{title}}</h3>
 	</div>
 	<div class='card-block'>
-		<div class='table-responsive'>
-			<table class='table table-sm table-hover table-striped' *ngIf='topics && topics.length'>
+		<div class='table-responsive'>			
+			<table class='table table-sm table-hover table-striped' *ngIf='comments && comments.length'>
 				<thead class="table-inverse bg-primary">
 					<tr>
+						<th>Comments</th>
 						<th>Topic</th>
-						<th>Category</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr *ngFor='let topic of topics'>
-						<td><a [routerLink]="['/topic', topic.id]" class="card-link">{{topic.title}}</a></td>
-						<td>{{topics.category?.title}}</td>
+					<tr *ngFor='let comment of comments'>
+						<td>{{comment.text}}</td>
+						<td>{{comment.topic?.title}}</td>
 						<td width='5%'><i class="fa fa-heart-o" aria-hidden="true"></i></td>
 					</tr>
 				</tbody>

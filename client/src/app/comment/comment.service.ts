@@ -7,23 +7,17 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
-import { ITopic } from './topic';
+import { IComment } from './comment';
 @Injectable()
-export class TopicService {
-  private _topicUrl = '/api/topic';
+export class CommentService {
+  private _commentUrl = '/api/comment';
 
   constructor(private _http: Http) { }
 
-  getTopics(): Observable<ITopic[]> {
-        return this._http.get(this._topicUrl)
-            .map((response: Response) => <ITopic[]> response.json())
+  getComments(): Observable<IComment[]> {
+        return this._http.get(this._commentUrl)
+            .map((response: Response) => <IComment[]> response.json())
             .do(data => console.log('All: ' +  JSON.stringify(data)))
-            .catch(this.handleError);
-    }
-     getTopic(id: number): Observable<ITopic> {
-         return this._http.get(this._topicUrl + "/" + id)
-            .map((response: Response) => <ITopic>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
   private handleError(error: Response) {

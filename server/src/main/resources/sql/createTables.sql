@@ -15,3 +15,12 @@ CREATE TABLE `trendsetter`.`topic` (
   `createdBy` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (categoryId) REFERENCES category(id));
+  
+CREATE TABLE `trendsetter`.`comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `topicId` INT NOT NULL,
+  `text` VARCHAR(150) NOT NULL,
+  `createdDate` DATETIME NOT NULL,
+  `createdBy` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (topicId) REFERENCES topic(id));

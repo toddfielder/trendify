@@ -1,6 +1,7 @@
+&nbsp;&nbsp;&nbsp;
 <div class='card' style="max-width: 90%; margin-left: auto; margin-right: auto;">
 	<div class='card-heading '>
-		<h2 class='card-title' style="display: inline;">&nbsp;&nbsp;{{topicTitle}}</h2>
+		<h2 class='card-title' style="display: inline;">&nbsp;&nbsp;{{category?.title}}</h2>
 		&nbsp;&nbsp;&nbsp;
 		<h5 style="display: inline;">
 			<i class="fa fa-plus" aria-hidden="true"></i>
@@ -8,14 +9,14 @@
 	</div>
 	&nbsp;
 	<div class="row container-fluid">
-		<div class="col">
-			<app-topic [title]="'Favorites'"></app-topic>
+		<div class="col" *ngIf="category">
+			<app-topic [title]="'Favorites'" [topics]="category.topics"></app-topic>
+		</div>		
+		<div class="col" *ngIf="category">
+			<app-topic [title]="'Trending'" [topics]="category.topics"></app-topic>
 		</div>
-		<div class="col">
-			<app-topic [title]="'Global'"></app-topic>
-		</div>
-		<div class="col">
-			<app-topic [title]="'New'"></app-topic>
+		<div class="col" *ngIf="category">
+			<app-topic [title]="'New'" [topics]="category.topics"></app-topic>
 		</div>
 	</div>
 	&nbsp;

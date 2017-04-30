@@ -17,7 +17,7 @@ export class CategoryComponent implements OnInit {
   constructor(private _categoryService: CategoryService) { }
 
   ngOnInit() {
-    console.log('---in OnInit()');
+    console.log('CategoryComponent::ngOnInit()');
     this._categoryService.getCategories()
       .subscribe(categories => this.categories = categories,
         error => this.errorMessage = <any>error);

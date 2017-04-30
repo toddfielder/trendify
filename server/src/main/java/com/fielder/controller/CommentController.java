@@ -15,8 +15,8 @@ import com.fielder.service.TopicService;
 
 
 @RestController
-@RequestMapping(value="/api/topic")
-public class TopicController {
+@RequestMapping(value="/api/comment")
+public class CommentController {
 	@Autowired
 	private TopicService topicService;
 	
@@ -25,11 +25,5 @@ public class TopicController {
 	public ResponseEntity<List<Topic>> getTopics() {
 	    return new ResponseEntity<List<Topic>>(topicService.getTopics(), HttpStatus.OK);
 	}
-	
-	@RequestMapping(value = "/{topicId}", method = RequestMethod.GET)
-	public ResponseEntity<Topic> getCategoryById(@PathVariable Integer topicId) {
-	    return new ResponseEntity<Topic>(topicService.getTopicById(topicId), HttpStatus.OK);
-	}
-	
 	
 }

@@ -15,16 +15,17 @@ import com.fielder.service.CategoryService;
 
 
 @RestController
+@RequestMapping(value="/api/category")
 public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
 	
-	@RequestMapping(value = "/category", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<Category>> getCategories() {
 	    return new ResponseEntity<List<Category>>(categoryService.getCategories(), HttpStatus.OK);
 	}
-	@RequestMapping(value = "/category/{catId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{catId}", method = RequestMethod.GET)
 	public ResponseEntity<Category> getCategoryById(@PathVariable Integer catId) {
 	    return new ResponseEntity<Category>(categoryService.getCategoryById(catId), HttpStatus.OK);
 	}

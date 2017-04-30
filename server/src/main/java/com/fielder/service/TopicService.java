@@ -23,6 +23,7 @@ public class TopicService {
 	public Topic getTopicById(Integer topicId) {
 		Topic topic = topicRepository.findOne(topicId);
 		System.out.println("desc: " + topic.getCategory().getDescription());
+		System.out.println("text: " + topic.getComments().get(0).getText());
 		return topic;
 	}
 	

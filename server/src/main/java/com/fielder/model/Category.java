@@ -30,7 +30,6 @@ public class Category implements Serializable{
 	private String description;
 	
 	@OneToMany (mappedBy="category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	//@JsonManagedReference
 	private List<Topic> topics;	
 	
 	public Integer getId() {

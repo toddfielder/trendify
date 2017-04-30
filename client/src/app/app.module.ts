@@ -11,7 +11,12 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './category/category.service';
 import { TopicComponent } from './topic/topic.component';
 import { TopicService } from './topic/topic.service';
+import { CommentService } from './comment/comment.service';
 import { CategoryDetailComponent } from './category/categorydetail/categorydetail.component';
+import { TopicDetailComponent } from './topic/topicdetail/topicdetail.component';
+
+
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,9 @@ import { CategoryDetailComponent } from './category/categorydetail/categorydetai
     CategoryComponent,
     DashboardComponent,
     TopicComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    TopicDetailComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -27,11 +34,12 @@ import { CategoryDetailComponent } from './category/categorydetail/categorydetai
     HttpModule,
     RouterModule.forRoot([
       { path: 'category/:id', component: CategoryDetailComponent },
+      { path: 'topic/:id', component: TopicDetailComponent },
       { path: '', component: DashboardComponent },
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
     ]),
   ],
-  providers: [CategoryService, TopicService],
+  providers: [CategoryService, TopicService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

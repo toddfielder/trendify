@@ -11,7 +11,7 @@ import { ICategory } from './category';
 
 @Injectable()
 export class CategoryService {
-    private _categoryUrl = '/category';
+    private _categoryUrl = '/api/category';
 
     constructor(private _http: Http) { }
 
@@ -22,8 +22,10 @@ export class CategoryService {
             .catch(this.handleError);
     }
     getCategory(id: number): Observable<ICategory> {
-        return this.getCategories()
-            .map((categories: ICategory[]) => categories.find(c => c.id === id));
+         return this._http.get(this._categoryUrl + "/" + id)
+            .map((response: Response) => <ICategory>response.json())
+            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
     }
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
