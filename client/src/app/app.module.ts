@@ -14,7 +14,7 @@ import { TopicService } from './topic/topic.service';
 import { CommentService } from './comment/comment.service';
 import { CategoryDetailComponent } from './category/categorydetail/categorydetail.component';
 import { TopicDetailComponent } from './topic/topicdetail/topicdetail.component';
-
+import { UserModule } from './user/user.module';
 
 import { CommentComponent } from './comment/comment.component';
 
@@ -35,6 +35,7 @@ import { CommentComponent } from './comment/comment.component';
     RouterModule.forRoot([
       { path: 'category/:id', component: CategoryDetailComponent },
       { path: 'topic/:id', component: TopicDetailComponent },
+      { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
       { path: '', component: DashboardComponent },
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
     ]),

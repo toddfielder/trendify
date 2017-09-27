@@ -24,3 +24,14 @@ CREATE TABLE `trendsetter`.`comment` (
   `createdBy` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (topicId) REFERENCES topic(id));
+  
+CREATE TABLE `trendsetter`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `firstName` INT NOT NULL,
+  `lastName` VARCHAR(150) NOT NULL,
+  `email` INT NOT NULL,
+  `password` VARCHAR(150) NOT NULL, 
+  -- `createdDate` DATETIME NOT NULL,
+  -- `createdBy` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`));
+  

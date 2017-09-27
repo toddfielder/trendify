@@ -19,4 +19,7 @@ public class TrendsetterApplication {
 	{
 	    return new Hibernate4Module();
 	}
+	
+	
+
 }
