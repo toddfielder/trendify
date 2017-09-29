@@ -10,10 +10,10 @@ import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class TrendsetterApplication {
+public class TrendsetterGateway {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TrendsetterApplication.class, args);
+		SpringApplication.run(TrendsetterGateway.class, args);
 	}
 	
 	@Bean
