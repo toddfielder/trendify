@@ -1,9 +1,8 @@
-package com.fielder.repository;
+package com.fielder.topic.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.fielder.model.Topic;
-import com.fielder.model.projection.TopicCategoryView;
+import com.fielder.domain.Topic;
 
 //@RepositoryRestResource(collectionResourceRel = "categories", path = "categories")
 //@RepositoryRestResource(excerptProjection = TopicCategoryView.class)

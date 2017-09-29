@@ -30,9 +30,9 @@ public class Comment implements Serializable{
 	
 	private String text;	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn (name="topicId")
-	private Topic topic;	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn (name="topicId")
+//	private Topic topic;	
 	
 	public Integer getId() {
 		return id;
@@ -50,12 +50,12 @@ public class Comment implements Serializable{
 		this.text = text;
 	}
 
-	public Topic getTopic() {
-		return topic;
-	}
-
-	public void setTopic(Topic topic) {
-		this.topic = topic;
-	}
+//	public Topic getTopic() {
+//		return topic;
+//	}
+//
+//	public void setTopic(Topic topic) {
+//		this.topic = topic;
+//	}
 	
 }

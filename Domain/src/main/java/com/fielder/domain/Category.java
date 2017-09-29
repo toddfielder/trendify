@@ -1,14 +1,10 @@
-package com.fielder.model;
+package com.fielder.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -29,8 +25,8 @@ public class Category implements Serializable{
 	private String title;	
 	private String description;
 	
-	@OneToMany (mappedBy="category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Topic> topics;	
+//	@OneToMany (mappedBy="category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	private List<Topic> topics;	
 	
 	public Integer getId() {
 		return id;
@@ -56,13 +52,13 @@ public class Category implements Serializable{
 		this.description = description;
 	}
 	//@JsonIgnore
-	public List<Topic> getTopics() {
-		return topics;
-	}
-
-	public void setTopics(List<Topic> topics) {
-		this.topics = topics;
-	}
+//	public List<Topic> getTopics() {
+//		return topics;
+//	}
+//
+//	public void setTopics(List<Topic> topics) {
+//		this.topics = topics;
+//	}
 	
 	
 }

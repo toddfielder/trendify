@@ -1,4 +1,4 @@
-package com.fielder.model;
+package com.fielder.domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,9 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fielder.domain.Category;
 
 @Entity
 @Table(name = "Topic")
@@ -34,12 +34,12 @@ public class Topic implements Serializable{
 	private String title;	
 	private String description;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn (name="categoryId")
-	private Category category;	
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn (name="categoryId")
+//	private Category category;	
 	
-	@OneToMany (mappedBy="topic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Comment> comments;	
+//	@OneToMany (mappedBy="topic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	private List<Comment> comments;	
 	
 	public Integer getId() {
 		return id;
@@ -64,20 +64,20 @@ public class Topic implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Category getCategory() {
-		return category;
-	}
+//	public Category getCategory() {
+//		return category;
+//	}
+//
+//	public void setCategory(Category category) {
+//		this.category = category;
+//	}
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
+//	public List<Comment> getComments() {
+//		return comments;
+//	}
+//
+//	public void setComments(List<Comment> comments) {
+//		this.comments = comments;
+//	}
 	
 }

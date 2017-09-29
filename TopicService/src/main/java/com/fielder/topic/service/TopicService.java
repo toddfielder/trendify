@@ -1,12 +1,12 @@
-package com.fielder.service;
+package com.fielder.topic.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fielder.model.Topic;
-import com.fielder.repository.TopicJpaRepository;
+import com.fielder.domain.Topic;
+import com.fielder.topic.repository.TopicJpaRepository;
 
 @Service
 public class TopicService {
@@ -22,10 +22,8 @@ public class TopicService {
 
 	public Topic getTopicById(Integer topicId) {
 		Topic topic = topicRepository.findOne(topicId);
-		System.out.println("desc: " + topic.getCategory().getDescription());
-		System.out.println("text: " + topic.getComments().get(0).getText());
+		//System.out.println("desc: " + topic.getCategory().getDescription());
+		//System.out.println("text: " + topic.getComments().get(0).getText());
 		return topic;
-	}
-	
-	
+	}	
 }

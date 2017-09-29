@@ -1,4 +1,4 @@
-package com.fielder.category.controller;
+package com.fielder.topic.controller;
 
 import java.util.List;
 
@@ -12,30 +12,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fielder.category.service.CategoryService;
-import com.fielder.domain.Category;
+import com.fielder.domain.Topic;
+import com.fielder.topic.service.TopicService;
+
 
 @RestController
 @RequestMapping
-public class CategoryController {
+public class TopicController {
 	@Value("${service.instance.name}")
-	private String instance;
+	private String instance;	
 	
 	@Autowired
-	private CategoryService categoryService;	
+	private TopicService topicService;	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ResponseEntity<List<Category>> getCategories() {		
-		System.out.println("-------------getCategories-------------");
-	    return new ResponseEntity<List<Category>>(categoryService.getCategories(), HttpStatus.OK);
+	public ResponseEntity<List<Topic>> getTopics() {
+	    return new ResponseEntity<List<Topic>>(topicService.getTopics(), HttpStatus.OK);
 	}
-	@RequestMapping(value = "/{catId}", method = RequestMethod.GET)
-	public ResponseEntity<Category> getCategoryById(@PathVariable Integer catId) {
-	    return new ResponseEntity<Category>(categoryService.getCategoryById(catId), HttpStatus.OK);
+	
+	@RequestMapping(value = "/{topicId}", method = RequestMethod.GET)
+	public ResponseEntity<Topic> getTopicById(@PathVariable Integer topicId) {
+	    return new ResponseEntity<Topic>(topicService.getTopicById(topicId), HttpStatus.OK);
 	}
-
+	
 	@GetMapping("/test")
 	public String message(){
-		return "Hello from CategoryService: "+ instance;
+		return "Hello from TopicService: "+ instance;
 	}
 }
