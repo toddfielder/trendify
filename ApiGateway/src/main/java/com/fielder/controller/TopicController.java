@@ -30,7 +30,7 @@ public class TopicController {
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<Topic>> getTopics() {
 		RestTemplate restTemplate = restTemplateBuilder.build();
-		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("TopicService", false);
+		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("topic", false);
 		
 		String baseUrl = instanceInfo.getHomePageUrl();
 		ResponseEntity<List<Topic>> response =
@@ -41,7 +41,7 @@ public class TopicController {
 	@RequestMapping(value = "/{topicId}", method = RequestMethod.GET)
 	public ResponseEntity<Topic> getTopicById(@PathVariable Integer topicId) {
 		RestTemplate restTemplate = restTemplateBuilder.build();
-		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("TopicService", false);		
+		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("topic", false);		
 		String baseUrl = instanceInfo.getHomePageUrl();
 		ResponseEntity<Topic> response =
 				restTemplate.exchange(baseUrl + "/" + topicId, HttpMethod.GET, null, new ParameterizedTypeReference<Topic>(){});
@@ -50,7 +50,7 @@ public class TopicController {
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public ResponseEntity<String> callService() {
 		RestTemplate restTemplate = restTemplateBuilder.build();
-		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("TopicService", false);
+		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("topic", false);
 		
 		String baseUrl = instanceInfo.getHomePageUrl();
 		ResponseEntity<String> response = restTemplate.exchange(baseUrl + "/test", HttpMethod.GET, null, String.class);
