@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CardModule } from 'primeng/card';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -29,9 +34,13 @@ import { CommentComponent } from './comment/comment.component';
     CommentComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    PanelModule,
     HttpModule,
+    CardModule,
+    TableModule,
     RouterModule.forRoot([
       { path: 'category/:id', component: CategoryDetailComponent },
       { path: 'topic/:id', component: TopicDetailComponent },

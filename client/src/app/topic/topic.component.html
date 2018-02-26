@@ -1,26 +1,19 @@
+<p-card [title]=title>
+    <p-table [value]=topics>
+      <ng-template pTemplate="header">
+        <tr>
+          <th width='40%'>Category</th>
+          <th>Description</th>
+          <th width='10%'></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-topic>
+        <tr>
+            <td><a [routerLink]="['/topic', topic.id]" class="card-link">{{topic.title}}</a></td>
+						<td>{{topic.category?.title}}</td>
+						<td style='text-align: center;'><i class="fa fa-heart-o" aria-hidden="true"></i></td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
 
-<div class='card'>
-	<div class='card-header'>
-		<h3 class='card-title'>&nbsp;{{title}}</h3>
-	</div>
-	<div class='card-block'>
-		<div class='table-responsive'>
-			<table class='table table-sm table-hover table-striped' *ngIf='topics && topics.length'>
-				<thead class="table-inverse bg-primary">
-					<tr>
-						<th>Topic</th>
-						<th>Category</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor='let topic of topics'>
-						<td><a [routerLink]="['/topic', topic.id]" class="card-link">{{topic.title}}</a></td>
-						<td>{{topics.category?.title}}</td>
-						<td width='5%'><i class="fa fa-heart-o" aria-hidden="true"></i></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>

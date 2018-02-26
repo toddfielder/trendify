@@ -41,7 +41,18 @@ public class CategoryController {
 				restTemplate.exchange(baseUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Category>>(){});
 		return response;
 	}
-	
+	@RequestMapping(value = "create", method = RequestMethod.POST)
+	public ResponseEntity<List<Category>> createCategory(Category cat) {
+		System.out.println("API Gateway: " + cat.getTitle());
+	    RestTemplate restTemplate = restTemplateBuilder.build();
+		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("category", false);
+		
+		
+		String baseUrl = instanceInfo.getHomePageUrl();
+		ResponseEntity<List<Category>> response =
+				restTemplate.exchange(baseUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Category>>(){});
+		return response;
+	}
 //	@RequestMapping(value = "/{catId}", method = RequestMethod.GET)
 //	public ResponseEntity<Category> getCategoryById(@PathVariable Integer catId) {
 //		RestTemplate restTemplate = restTemplateBuilder.build();
