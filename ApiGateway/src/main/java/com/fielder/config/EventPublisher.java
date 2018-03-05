@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 
 public class EventPublisher {
 
@@ -40,7 +39,7 @@ public class EventPublisher {
     this.topicExchange = topicExchange;
   }
 
-  @Scheduled(fixedDelay = 1000, initialDelay = 500)
+  //@Scheduled(fixedDelay = 1000, initialDelay = 500)
   public void sendMessage() {
     String routingKey = randomRoutingKey();
     String message = String.format("Event no. %d of type '%s'", ++messageNumber, routingKey);

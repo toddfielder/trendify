@@ -1,36 +1,46 @@
+package com.fielder.service;
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 //package com.fielder.service;
 //
 //import java.util.HashSet;
-//import java.util.Set;
-//
-//import javax.transaction.Transactional;
-//
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.stereotype.Service;
-//
-//import com.fielder.model.TrendsetterRole;
-//import com.fielder.model.TrendsetterUser;
-//import com.fielder.repository.UserRepository;
-//
-// 
+import org.springframework.stereotype.Service;
+
+import com.fielder.model.Person;
+import com.fielder.model.UserHolder;
+
+ 
 //@Transactional
-//@Service
-//public class UserSecurityService implements UserDetailsService {
-//
-//    private static final Logger LOGGER = LoggerFactory.getLogger(UserSecurityService.class);
-//
+@Service
+public class UserService  {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
+    @Autowired
+	private UserHolder appUser;
+    
+	public void assignPersonAndRoles(HttpServletRequest request) {
+		
+		System.out.println("------------assignPersonAndRoles-------------");
+		
+		
+		Person p = new Person();
+		p.setFirstName("Todd");
+		p.setLastName("Fielder");
+		p.setEmailAddress("todd.fielder@gmail.com");
+		appUser.getUser().setPerson(p);
+	}
+
 //    private UserRepository userRepository;
 //
 //    public UserSecurityService(UserRepository userRepository){
 //        this.userRepository=userRepository;
 //    }
-//
+    
+    
 //    @Override
 //    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        try {
@@ -59,4 +69,4 @@
 //    }
 //
 //
-//}
+}
