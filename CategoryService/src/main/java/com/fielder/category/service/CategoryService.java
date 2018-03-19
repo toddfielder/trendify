@@ -27,6 +27,12 @@ public class CategoryService {
 		//System.out.println("desc: " + category.getTopics().get(0).getDescription());
 		return category.get();
 	}
+	public Category createCategory(Category cat) {
+		cat.setCreatedBy("tpfield");
+		cat.setUpdatedBy("tpfield");
+		Category retVal = categoryRepository.save(cat);
+		return retVal;
+	}
 	
 	
 }

@@ -4,4 +4,6 @@ SELECT * FROM trendsetter.topic order by id asc;
 
 SELECT * FROM trendsetter.comment order by id asc;
 
-select topic0_.id as id1_1_, topic0_.categoryId as category4_1_, topic0_.description as descript2_1_, topic0_.title as title3_1_ from topic topic0_category
+select topic0_.id as id1_1_, topic0_.categoryId as category4_1_, topic0_.description as descript2_1_, topic0_.title as title3_1_ from topic topic0_category;
+
+DELETE FROM trendsetter.category WHERE title like 'Test%';

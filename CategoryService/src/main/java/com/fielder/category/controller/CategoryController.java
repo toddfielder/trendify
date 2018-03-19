@@ -28,9 +28,7 @@ public class CategoryController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<List<Category>> getCategories() {		
-		System.out.println("-------------getCategories-------------");
-		List<Category> categories = categoryService.getCategories();
-		
+		List<Category> categories = categoryService.getCategories();	
 		
 	    return new ResponseEntity<List<Category>>(categories, HttpStatus.OK);
 	}
@@ -39,11 +37,10 @@ public class CategoryController {
 		Category cat = categoryService.getCategoryById(catId);
 	    return new ResponseEntity<Category>(cat, HttpStatus.OK);
 	}
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ResponseEntity<Category> createCategory(@RequestBody Category cat) {
-		System.out.println("-------------createCategory create-------------: " + cat.getTitle());
-		
-	    return new ResponseEntity<Category>(cat, HttpStatus.OK);
+		Category ret = categoryService.createCategory(cat);
+	    return new ResponseEntity<Category>(ret, HttpStatus.OK);
 	}
 	@GetMapping("/test")
 	public String message(@RequestHeader("x-location") String location){

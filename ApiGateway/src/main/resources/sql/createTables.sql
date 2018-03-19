@@ -4,6 +4,8 @@ CREATE TABLE `trendsetter`.`category` (
   `description` VARCHAR(150) NOT NULL,
   `createdDate` DATETIME NOT NULL,
   `createdBy` VARCHAR(50) NOT NULL,
+  `updatedDate` DATETIME NOT NULL,
+  `updatedBy` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`));
   
 CREATE TABLE `trendsetter`.`topic` (
@@ -13,6 +15,8 @@ CREATE TABLE `trendsetter`.`topic` (
   `description` VARCHAR(150),
   `createdDate` DATETIME NOT NULL,
   `createdBy` VARCHAR(50) NOT NULL,
+  `updatedDate` DATETIME NOT NULL,
+  `updatedBy` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (categoryId) REFERENCES category(id));
   
@@ -22,6 +26,8 @@ CREATE TABLE `trendsetter`.`comment` (
   `text` VARCHAR(150) NOT NULL,
   `createdDate` DATETIME NOT NULL,
   `createdBy` VARCHAR(50) NOT NULL,
+  `updatedDate` DATETIME NOT NULL,
+  `updatedBy` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (topicId) REFERENCES topic(id));
   

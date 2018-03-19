@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -40,9 +41,10 @@ public class CategoryService {
 	} 
 	
 	@HystrixCommand(fallbackMethod = "createCategoryFailed")
-	public ResponseEntity<Category> createCategory(Category cat) {		
-		ResponseEntity<Category> response =
-				restTemplate.exchange("http://category/create", HttpMethod.POST, null, new ParameterizedTypeReference<Category>(){});
+	public ResponseEntity<Category> createCategory(Category cat) {	
+		ResponseEntity<Category> response = restTemplate
+				  .exchange("http://category", HttpMethod.POST, new HttpEntity<>(cat), new ParameterizedTypeReference<Category>(){});
+		
 		return response;
 	}
 	public ResponseEntity<Category> createCategoryFailed(Category cat){
