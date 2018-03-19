@@ -10,7 +10,7 @@
       <ng-template pTemplate="body" let-topic>
         <tr>
             <td><a [routerLink]="['/topic', topic.id]" class="card-link">{{topic.title}}</a></td>
-						<td>{{topic.category?.title}}</td>
+						<td>{{topic.description}}</td>
 						<td style='text-align: center;'><i class="fa fa-heart-o" aria-hidden="true"></i></td>
         </tr>
       </ng-template>

@@ -23,8 +23,7 @@ public class UserService  {
 	private UserHolder appUser;
     
 	public void assignPersonAndRoles(HttpServletRequest request) {
-		
-		System.out.println("------------assignPersonAndRoles-------------");
+		logger.info("------------assignPersonAndRoles-------------");
 		
 		
 		Person p = new Person();

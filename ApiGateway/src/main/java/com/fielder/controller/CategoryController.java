@@ -32,14 +32,7 @@ public class CategoryController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<Category>> getCategories() {
-	    RestTemplate restTemplate = restTemplateBuilder.build();
-		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("category", false);
-		
-		
-		String baseUrl = instanceInfo.getHomePageUrl();
-		ResponseEntity<List<Category>> response =
-				restTemplate.exchange(baseUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Category>>(){});
-		return response;
+		return categoryService.getCategories();
 	}
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public ResponseEntity<List<Category>> createCategory(Category cat) {
@@ -53,28 +46,8 @@ public class CategoryController {
 				restTemplate.exchange(baseUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Category>>(){});
 		return response;
 	}
-//	@RequestMapping(value = "/{catId}", method = RequestMethod.GET)
-//	public ResponseEntity<Category> getCategoryById(@PathVariable Integer catId) {
-//		RestTemplate restTemplate = restTemplateBuilder.build();
-//		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("category", false);		
-//		String baseUrl = instanceInfo.getHomePageUrl();
-//		ResponseEntity<Category> response =
-//				restTemplate.exchange(baseUrl + "/" + catId, HttpMethod.GET, null, new ParameterizedTypeReference<Category>(){});
-//		return response;
-//	}
 	@RequestMapping(value = "/{catId}", method = RequestMethod.GET)
 	public ResponseEntity<Category> getCategoryById(@PathVariable Integer catId) {		
 		return categoryService.getCategoryById(catId);
 	}
-	
-//	
-//	@RequestMapping(value = "/test", method = RequestMethod.GET)
-//	public ResponseEntity<String> callService() {
-//		RestTemplate restTemplate = restTemplateBuilder.build();
-//		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("category", false);
-//		
-//		String baseUrl = instanceInfo.getHomePageUrl();
-//		ResponseEntity<String> response = restTemplate.exchange(baseUrl + "/test", HttpMethod.GET, null, String.class);
-//		return response;
-//	}
 }

@@ -29,11 +29,15 @@ public class CategoryController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<List<Category>> getCategories() {		
 		System.out.println("-------------getCategories-------------");
-	    return new ResponseEntity<List<Category>>(categoryService.getCategories(), HttpStatus.OK);
+		List<Category> categories = categoryService.getCategories();
+		
+		
+	    return new ResponseEntity<List<Category>>(categories, HttpStatus.OK);
 	}
 	@RequestMapping(value = "/{catId}", method = RequestMethod.GET)
 	public ResponseEntity<Category> getCategoryById(@PathVariable Integer catId) {
-	    return new ResponseEntity<Category>(categoryService.getCategoryById(catId), HttpStatus.OK);
+		Category cat = categoryService.getCategoryById(catId);
+	    return new ResponseEntity<Category>(cat, HttpStatus.OK);
 	}
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ResponseEntity<Category> createCategory(@RequestBody Category cat) {

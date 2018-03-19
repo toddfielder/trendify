@@ -1,6 +1,7 @@
 package com.fielder.category.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,10 @@ public class CategoryService {
 	}
 	//FIXME fix categoryRepository.findOne(catId);
 	public Category getCategoryById(Integer catId) {
-		//Category category = categoryRepository.findOne(catId);
+		
+		Optional<Category> category = categoryRepository.findById(catId);
 		//System.out.println("desc: " + category.getTopics().get(0).getDescription());
-		return null;
+		return category.get();
 	}
 	
 	
