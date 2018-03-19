@@ -22,28 +22,25 @@ import com.netflix.discovery.EurekaClient;
 public class TopicController {
 	@Autowired
 	private EurekaClient eurekaClient;
-	
+	@Autowired
+	private RestTemplate restTemplate;
 	@Autowired
 	private RestTemplateBuilder restTemplateBuilder;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<Topic>> getTopics() {
-		RestTemplate restTemplate = restTemplateBuilder.build();
-		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("topic", false);
-		
-		String baseUrl = instanceInfo.getHomePageUrl();
 		ResponseEntity<List<Topic>> response =
-				restTemplate.exchange(baseUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Topic>>(){});
+				restTemplate.exchange("http://topic/", HttpMethod.GET, null, new ParameterizedTypeReference<List<Topic>>(){});
 		return response;		
 	}
 	
 	@RequestMapping(value = "/{topicId}", method = RequestMethod.GET)
 	public ResponseEntity<Topic> getTopicById(@PathVariable Integer topicId) {
-		RestTemplate restTemplate = restTemplateBuilder.build();
-		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("topic", false);		
-		String baseUrl = instanceInfo.getHomePageUrl();
+//		RestTemplate restTemplate = restTemplateBuilder.build();
+//		InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("topic", false);		
+//		String baseUrl = instanceInfo.getHomePageUrl();
 		ResponseEntity<Topic> response =
-				restTemplate.exchange(baseUrl + "/" + topicId, HttpMethod.GET, null, new ParameterizedTypeReference<Topic>(){});
+				restTemplate.exchange("http://topic/" + topicId, HttpMethod.GET, null, new ParameterizedTypeReference<Topic>(){});
 		return response;
 	}
 	@RequestMapping(value = "/test", method = RequestMethod.GET)

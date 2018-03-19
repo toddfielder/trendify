@@ -10,7 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.Module;
-import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -24,9 +24,9 @@ public class ApiGateway {
 	}
 	
 	@Bean
-	public Module hibernate4Module()
+	public Module hibernate5Module()
 	{
-	    return new Hibernate4Module();
+	    return new Hibernate5Module();
 	}
 	
 //	@Bean

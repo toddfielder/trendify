@@ -1,6 +1,7 @@
 package com.fielder.topic.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,11 @@ public class TopicService {
 	    return topics;
 	}
 
+	//TODO: fix topicRepository.findOne(topicId);
 	public Topic getTopicById(Integer topicId) {
-		Topic topic = topicRepository.findOne(topicId);
+		Optional<Topic> topic = topicRepository.findById(topicId);
 		//System.out.println("desc: " + topic.getCategory().getDescription());
 		//System.out.println("text: " + topic.getComments().get(0).getText());
-		return topic;
+		return topic.get();
 	}	
 }

@@ -19,11 +19,11 @@ public class CategoryService {
 		
 	    return categories;
 	}
-
+	//FIXME fix categoryRepository.findOne(catId);
 	public Category getCategoryById(Integer catId) {
-		Category category = categoryRepository.findOne(catId);
+		//Category category = categoryRepository.findOne(catId);
 		//System.out.println("desc: " + category.getTopics().get(0).getDescription());
-		return category;
+		return null;
 	}
 	
 	
