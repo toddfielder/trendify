@@ -18,13 +18,12 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Category extends DBProperties implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7990783376825858354L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
+	//https://vladmihalcea.com/why-should-not-use-the-auto-jpa-generationtype-with-mysql-and-hibernate/
 	private Integer id;
 	private String title;
 	private String description;
